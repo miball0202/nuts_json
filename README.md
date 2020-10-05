@@ -1,8 +1,7 @@
 # NutsJson
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/nuts_json`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This will help you create a fast and simple JSON serializer.  
+Just write Hash and it becomes the Response Body.  
 
 ## Installation
 
@@ -22,7 +21,39 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+class UserSerializer < NutsJson::Serializer
+  def key
+    :users
+  end
+
+  def base(obj)
+    {
+      name: obj.name,
+      email: obj.email
+    }
+  end
+end
+```
+
+```ruby
+class UsersController < ApplicationController
+  def index
+    users = User.all
+  
+    # response as Array
+    render json: UserSerialier.new(users, :base).to_json, status: :ok
+  end
+
+  def show
+    user = User.find(params[:id])
+
+    # response as Object
+    render json: UserSerialier.new(user, :base).to_json, status: :ok
+  end
+end
+```
+
 
 ## Development
 
@@ -32,7 +63,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/nuts_json.
+Bug reports and pull requests are welcome on GitHub at https://github.com/miball0202/nuts_json.
 
 
 ## License
