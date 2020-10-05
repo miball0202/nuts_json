@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 module NutsJson
-  require 'nuts_json/serializer'
-  require 'nuts_json/error'
+  require_relative 'nuts_json/serializer'
+  require_relative 'nuts_json/error'
 end

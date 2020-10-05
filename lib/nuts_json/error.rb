@@ -1,4 +1,5 @@
 # frozen_string_literal: true
 
-class Error < StandardError
+module NutsJson
+  class Error < StandardError;end
 end
