@@ -24,7 +24,7 @@ Or install it yourself as:
 ```ruby
 class UserSerializer < NutsJson::Serializer
   def key
-    :users
+    :user
   end
 
   def base(obj)

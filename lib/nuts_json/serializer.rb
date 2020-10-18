@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'activesupport'
 require 'oj'
 
 module NutsJson
